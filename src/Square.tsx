@@ -2,39 +2,45 @@ import React from "react";
 import "./Square.css";
 
 type Props = {
-    symbol: any;
-    value: number;
-    player1: any;
-  
+  symbol: any;
+  value: number;
+  player: any;
 };
 type State = {
-    symbol: any;
-    player1: any;
-    
+  symbol: any;
+  player: any;
 };
 
 class Square extends React.Component<Props, State> {
   constructor(props: any) {
     super(props);
     this.state = {
-        symbol: "X",
-        player1:"player1"
-      
+      symbol: "",
+      player: "Player1",
     };
-    }
-    
-   
-  changeSymbol = () => {
-    this.setState({
-      symbol: "/",
-    });
-      console.log(this.props.value)
+  }
+
+  
+  onNextPlayerClick = () => {
+    let myPlayer = this.state.player;
+    myPlayer = "player1" ? "player2" : "player1");
+    if (this.state.player === "player1") {
+      this.setState({
+        symbol: "O",
+        player: myPlayer,
+      });
+     }
+    console.log(this.props.value);
   };
 
   render() {
     return (
       <div>
-        <button className="btn" onClick={this.changeSymbol} value={this.props.value}>
+        <button
+          className="btn"
+          onClick={this.onNextPlayerClick}
+          value={this.props.value}
+        >
           {this.state.symbol}
         </button>
       </div>

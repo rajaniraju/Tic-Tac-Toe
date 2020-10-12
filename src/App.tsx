@@ -10,40 +10,41 @@ class App extends React.Component {
           <h1>Tic Tac Toe</h1>
         </div>
         <div>
+        <h2> Now Playing</h2>
           <table>
             <thead></thead>
             <tbody>
               <tr>
                 <td>
-                  <Square value={0} symbol={0} player1={"any"}/>
+                  <Square value={0} symbol={""} player={""} />
                 </td>
                 <td>
-                  <Square value={1} symbol={0} player1={"any"}/>
+                  <Square value={1} symbol={""} player={""} />
                 </td>
                 <td>
-                  <Square value={2} symbol={0} player1={"any"}/>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <Square value={3} symbol={0} player1={"any"}/>
-                </td>
-                <td>
-                  <Square value={4} symbol={0} player1={"any"}/>
-                </td>
-                <td>
-                  <Square value={5} symbol={0} player1={"any"} />
+                  <Square value={2} symbol={""} player={""} />
                 </td>
               </tr>
               <tr>
                 <td>
-                  <Square value={6} symbol={0} player1={"any"}/>
+                  <Square value={3} symbol={""} player={""} />
                 </td>
                 <td>
-                  <Square value={7} symbol={0} player1={"any"}/>
+                  <Square value={4} symbol={""} player={""} />
                 </td>
                 <td>
-                  <Square value={8} symbol={0} player1={"any"}/>
+                  <Square value={5} symbol={""} player={""} />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Square value={6} symbol={""} player={""} />
+                </td>
+                <td>
+                  <Square value={7}symbol={""} player={""} />
+                </td>
+                <td>
+                  <Square value={8}symbol={""} player={""} />
                 </td>
               </tr>
             </tbody>
