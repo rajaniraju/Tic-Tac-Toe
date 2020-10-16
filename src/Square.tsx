@@ -8,7 +8,7 @@ type Props = {
 };
 type State = {
   symbol: any;
-  player: any;
+  //player: any;
 };
 
 class Square extends React.Component<Props, State> {
@@ -16,30 +16,37 @@ class Square extends React.Component<Props, State> {
     super(props);
     this.state = {
       symbol: "",
-      player: "Player1",
+      //player: "player1",
     };
   }
 
   
-  onNextPlayerClick = () => {
-    let myPlayer = this.state.player;
-    myPlayer = "player1" ? "player2" : "player1");
-    if (this.state.player === "player1") {
+  onPlayerClick = () => {
+    
+    console.log(this.props.player);
+    if (this.props.player == "player 1") {
       this.setState({
-        symbol: "O",
-        player: myPlayer,
-      });
-     }
-    console.log(this.props.value);
-  };
+        symbol: "X"
+      })
+      if (this.props.player == "player 2") {
+        this.setState({
+          symbol: "O"
+        })
+      }
+      console.log(this.props.player);
+    
+      console.log(this.props.value);
+    }
+  }
 
   render() {
     return (
       <div>
         <button
           className="btn"
-          onClick={this.onNextPlayerClick}
+          onClick={this.onPlayerClick}
           value={this.props.value}
+          
         >
           {this.state.symbol}
         </button>
