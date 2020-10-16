@@ -5,6 +5,7 @@ type Props = {
   symbol: any;
   value: number;
   player: any;
+  onPlayerChange: any;
 };
 type State = {
   symbol: any;
@@ -22,17 +23,18 @@ class Square extends React.Component<Props, State> {
 
   
   onPlayerClick = () => {
-    
-    console.log(this.props.player);
+    this.props.onPlayerChange()
     if (this.props.player == "player 1") {
       this.setState({
         symbol: "X"
       })
-      if (this.props.player == "player 2") {
+      
+    if (this.props.player == "player 2") {
         this.setState({
           symbol: "O"
         })
       }
+      
       console.log(this.props.player);
     
       console.log(this.props.value);
