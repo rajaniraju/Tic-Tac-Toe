@@ -64,6 +64,28 @@ class App extends React.Component<Props, State> {
                   />
                 </td>
               </tr>
+              <tr>
+                <td>
+                  <Square value={3} symbol={""} player={this.state.player} onPlayerChange={this.onPlayerChange}/>
+                </td>
+                <td>
+                  <Square value={4} symbol={""} player={this.state.player} onPlayerChange={this.onPlayerChange}/>
+                </td>
+                <td>
+                  <Square value={5} symbol={""} player={this.state.player} onPlayerChange={this.onPlayerChange}/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Square value={6} symbol={""} player={this.state.player} onPlayerChange={this.onPlayerChange}/>
+                </td>
+                <td>
+                  <Square value={7} symbol={""} player={this.state.player} onPlayerChange={this.onPlayerChange}/>
+                </td>
+                <td>
+                  <Square value={8} symbol={""} player={this.state.player} onPlayerChange={this.onPlayerChange}/>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
