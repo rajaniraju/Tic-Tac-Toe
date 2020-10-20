@@ -3,6 +3,7 @@ import "./App.css";
 import Square from "./Square";
 type Props = {
   player: any;
+  symbol: any;
 };
 type State = {
   player: any;
@@ -15,14 +16,12 @@ class App extends React.Component<Props, State> {
     };
   }
   onPlayerChange = () => {
-    
     if (this.state.player === "player 1") {
-      this.setState ({
+      this.setState({
         player: "player 2",
       });
-    }
-    if (this.state.player === "player 2") {
-      this.setState ({
+    } else if (this.state.player === "player 2") {
+      this.setState({
         player: "player 1",
       });
     }
@@ -41,35 +40,28 @@ class App extends React.Component<Props, State> {
             <tbody>
               <tr>
                 <td>
-                  <Square value={0} symbol={""} player={this.state.player} onPlayerChange={this.onPlayerChange}/>
+                  <Square
+                    value={0}
+                    symbol={""}
+                    player={this.state.player}
+                    onPlayerChange={this.onPlayerChange}
+                  />
                 </td>
                 <td>
-                  <Square value={1} symbol={""} player={this.state.player} onPlayerChange={this.onPlayerChange}/>
+                  <Square
+                    value={1}
+                    symbol={""}
+                    player={this.state.player}
+                    onPlayerChange={this.onPlayerChange}
+                  />
                 </td>
                 <td>
-                  <Square value={2} symbol={""} player={this.state.player} onPlayerChange={this.onPlayerChange}/>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <Square value={3} symbol={""} player={this.state.player} onPlayerChange={this.onPlayerChange}/>
-                </td>
-                <td>
-                  <Square value={4} symbol={""} player={this.state.player} onPlayerChange={this.onPlayerChange}/>
-                </td>
-                <td>
-                  <Square value={5} symbol={""} player={this.state.player} onPlayerChange={this.onPlayerChange}/>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <Square value={6} symbol={""} player={this.state.player} onPlayerChange={this.onPlayerChange}/>
-                </td>
-                <td>
-                  <Square value={7} symbol={""} player={this.state.player} onPlayerChange={this.onPlayerChange}/>
-                </td>
-                <td>
-                  <Square value={8} symbol={""} player={this.state.player} onPlayerChange={this.onPlayerChange}/>
+                  <Square
+                    value={2}
+                    symbol={""}
+                    player={this.state.player}
+                    onPlayerChange={this.onPlayerChange}
+                  />
                 </td>
               </tr>
             </tbody>

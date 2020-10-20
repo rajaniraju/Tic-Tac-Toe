@@ -9,7 +9,7 @@ type Props = {
 };
 type State = {
   symbol: any;
-  //player: any;
+  touch: Boolean;
 };
 
 class Square extends React.Component<Props, State> {
@@ -17,29 +17,31 @@ class Square extends React.Component<Props, State> {
     super(props);
     this.state = {
       symbol: "",
-      //player: "player1",
+      touch: false,
     };
   }
 
-  
   onPlayerClick = () => {
-    this.props.onPlayerChange()
-    if (this.props.player == "player 1") {
-      this.setState({
-        symbol: "X"
-      })
-      
-    if (this.props.player == "player 2") {
-        this.setState({
-          symbol: "O"
-        })
-      }
-      
-      console.log(this.props.player);
-    
-      console.log(this.props.value);
+    console.log(this.props.player);
+    //if statement 26 is true cannot enter the button click.
+    if (this.state.touch) {
+      return;
     }
-  }
+    this.props.onPlayerChange();
+    if (this.props.player === "player 1") {
+      this.setState({
+        symbol: "X",
+        touch: true,
+      });
+    } else if (this.props.player === "player 2") {
+      this.setState({
+        symbol: "O",
+        touch: true,
+      });
+    }
+    console.log(this.props.player);
+    console.log(this.props.value);
+  };
 
   render() {
     return (
@@ -48,7 +50,6 @@ class Square extends React.Component<Props, State> {
           className="btn"
           onClick={this.onPlayerClick}
           value={this.props.value}
-          
         >
           {this.state.symbol}
         </button>
