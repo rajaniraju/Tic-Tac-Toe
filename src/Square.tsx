@@ -8,11 +8,8 @@ type Props = {
   col: number;
   symbol: any;
 };
-type State = {
-  touch: Boolean;
-};
 
-class Square extends React.Component<Props, State> {
+class Square extends React.Component<Props> {
   onPlayerClick = () => {
     console.log(this.props.player);
     console.log(this.props.row);

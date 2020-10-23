@@ -5,7 +5,6 @@ import Square from "./Square";
 type State = {
   player: string;
   board: string[][];
-  touch: boolean;
 };
 class App extends React.Component<null, State> {
   constructor(props: any) {
@@ -17,33 +16,38 @@ class App extends React.Component<null, State> {
         ["", "", ""],
         ["", "", ""],
       ],
-
-      touch: false,
     };
   }
 
   onPlayerChange = (row: number, col: number) => {
-    console.log(this.state.board)
-
+     console.log(this.state.board);
     let symbol = this.getSymbol(row, col);
     let board = this.state.board;
     board[row][col] = symbol;
-    console.log(board)
+    console.log(board);
+    let player = this.state.player;
+    if (player === "player 1") {
+      player = "player 2";
+    } else if (player === "player 2") {
+      player = "player 1";
+    }
     this.setState({
       board: board,
+      player: player,
     });
   };
 
   getSymbol(row: number, col: number): string {
     let symbol = "";
-    if (this.state.board[row][col] === "") {
-      if (this.state.player === "player 1") {
-        symbol = "X";
-      } else if (this.state.player === "player 2") {
-        symbol = "O";
+      if (this.state.board[row][col] === "") {
+        if (this.state.player === "player 1") {
+          symbol = "X";
+        } else if (this.state.player === "player 2") {
+          symbol = "O";
+        }
       }
-    }
-    return symbol;
+      return symbol;
+    
   }
 
   render() {
