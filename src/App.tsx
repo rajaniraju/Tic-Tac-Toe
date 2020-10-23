@@ -23,6 +23,7 @@ class App extends React.Component<null, State> {
      console.log(this.state.board);
     let symbol = this.getSymbol(row, col);
     let board = this.state.board;
+    //connecting symbol to board;
     board[row][col] = symbol;
     console.log(board);
     let player = this.state.player;
