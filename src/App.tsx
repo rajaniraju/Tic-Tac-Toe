@@ -40,11 +40,7 @@ class App extends React.Component<null, State> {
     board[row][col] = symbol;
     console.log(board);
     let player = this.state.player;
-    if (player === "player 1") {
-      player = "player 2";
-    } else if (player === "player 2") {
-      player = "player 1";
-    }
+    player = player === "player 1"?"player 2":"player 1"
     this.setState({
       player: player,
       board: board,
