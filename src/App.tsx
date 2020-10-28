@@ -21,13 +21,18 @@ class App extends React.Component<null, State> {
     };
   }
 
-  onPlayerChange = (row: number, col: number) => {
-    this.checkGameOver();
-    if (this.state.gameOver) {
+  onSquareClicked = (row: number, col: number) => {
+    let gameOver=this.checkGameOver(row,col);
+    if (gameOver) {
       alert("GAME OVER !");
       console.log("Game Over");
+      this.setState({
+        gameOver:gameOver
+      })
       return;
     }
+
+    // Game is not over.
     console.log(this.state.board);
     let symbol = this.getSymbol(row, col);
     let board = this.state.board;
@@ -45,8 +50,8 @@ class App extends React.Component<null, State> {
       board: board,
       });
   };
-  checkGameOver = () => {
-    let gameOver = false;
+  checkGameOver = (row: number, col: number) => {
+    let gameOver: boolean = false;
     if (
       this.state.board[0][0] === this.state.board[0][1] &&
       this.state.board[0][1] === this.state.board[0][2] &&
@@ -54,11 +59,11 @@ class App extends React.Component<null, State> {
     ) {
       gameOver = true;
     }
-    this.setState({
-      gameOver: gameOver,
-    });
-  };
-  
+    if (gameOver) {
+      return gameOver;
+    }
+      
+  }
   getSymbol(row: number, col: number): string {
     let symbol = "";
     if (this.state.board[row][col] === "") {
@@ -92,7 +97,7 @@ class App extends React.Component<null, State> {
                     col={0}
                     symbol={this.state.board[0][0]}
                     player={this.state.player}
-                    onPlayerChange={this.onPlayerChange}
+                    onPlayerChange={this.onSquareClicked}
                   />
                 </td>
                 <td>
@@ -101,7 +106,7 @@ class App extends React.Component<null, State> {
                     row={0}
                     col={1}
                     player={this.state.player}
-                    onPlayerChange={this.onPlayerChange}
+                    onPlayerChange={this.onSquareClicked}
                   />
                 </td>
                 <td>
@@ -110,7 +115,7 @@ class App extends React.Component<null, State> {
                     col={2}
                     symbol={this.state.board[0][2]}
                     player={this.state.player}
-                    onPlayerChange={this.onPlayerChange}
+                    onPlayerChange={this.onSquareClicked}
                   />
                 </td>
               </tr>
@@ -121,7 +126,7 @@ class App extends React.Component<null, State> {
                     col={0}
                     symbol={this.state.board[1][0]}
                     player={this.state.player}
-                    onPlayerChange={this.onPlayerChange}
+                    onPlayerChange={this.onSquareClicked}
                   />
                 </td>
                 <td>
@@ -130,7 +135,7 @@ class App extends React.Component<null, State> {
                     col={1}
                     symbol={this.state.board[1][1]}
                     player={this.state.player}
-                    onPlayerChange={this.onPlayerChange}
+                    onPlayerChange={this.onSquareClicked}
                   />
                 </td>
                 <td>
@@ -139,7 +144,7 @@ class App extends React.Component<null, State> {
                     col={2}
                     symbol={this.state.board[1][2]}
                     player={this.state.player}
-                    onPlayerChange={this.onPlayerChange}
+                    onPlayerChange={this.onSquareClicked}
                   />
                 </td>
               </tr>
@@ -150,7 +155,7 @@ class App extends React.Component<null, State> {
                     col={0}
                     symbol={this.state.board[2][0]}
                     player={this.state.player}
-                    onPlayerChange={this.onPlayerChange}
+                    onPlayerChange={this.onSquareClicked}
                   />
                 </td>
                 <td>
@@ -159,7 +164,7 @@ class App extends React.Component<null, State> {
                     col={1}
                     symbol={this.state.board[2][1]}
                     player={this.state.player}
-                    onPlayerChange={this.onPlayerChange}
+                    onPlayerChange={this.onSquareClicked}
                   />
                 </td>
                 <td>
@@ -168,7 +173,7 @@ class App extends React.Component<null, State> {
                     col={2}
                     symbol={this.state.board[2][2]}
                     player={this.state.player}
-                    onPlayerChange={this.onPlayerChange}
+                    onPlayerChange={this.onSquareClicked}
                   />
                 </td>
               </tr>
