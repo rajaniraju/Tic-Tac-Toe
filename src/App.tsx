@@ -22,37 +22,28 @@ class App extends React.Component<null, State> {
   }
 
   onSquareClicked = (row: number, col: number) => {
-    let player = this.state.player;
-    player = player === "player 1" ? "player 2" : "player 1";
     let symbol = this.getSymbol(row, col);
     let board = this.state.board;
     // update board with the correct symbol;
     board[row][col] = symbol;
-    this.setState(
-      {
-        player: player,
-        board: board,
-      },
-      () => {
-        // Post setState call back.
-        let gameOver = this.checkGameOver(row, col);
-        console.log("gameOver", gameOver);
+    this.setState({ board: board }, () => {
+      // Post setState call back.
+      let gameOver = this.checkGameOver(row, col);
+      console.log("gameOver", gameOver);
 
-        if (gameOver) {
-          this.setState(
-            {
-              gameOver: gameOver,
-            },
-            () => {
-              //alert("GAME OVER !");
-              console.log("Game Over");
-            }
-          );
-          // console.log(this.state.player);
-          return;
-        }
+      if (gameOver) {
+        this.setState({ gameOver: gameOver }, () => {
+          //alert("GAME OVER !");
+          console.log("Game Over");
+        });
+        // console.log(this.state.player);
+        return;
+      } else {
+        let player = this.state.player;
+        player = player === "player 1" ? "player 2" : "player 1";
+        this.setState({ player: player });
       }
-    );
+    });
 
     // Game is not over.
     console.log("game is not over");
@@ -96,6 +87,7 @@ class App extends React.Component<null, State> {
             {this.state.gameOver && (
               <div>
                 Game Over ! Refresh to play next Game.{this.state.gameOver}
+                {this.state.player} Won !
               </div>
             )}
           </h2>
