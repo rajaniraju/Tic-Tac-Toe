@@ -23,9 +23,9 @@ class Square extends React.Component<Props, State> {
     if (this.state.touch) {
       return
     }
-    console.log(this.props.player);
-    console.log(this.props.row);
-    console.log(this.props.col);
+    // console.log(this.props.player);
+    // console.log(this.props.row);
+    // console.log(this.props.col);
     //if statement 26 is true cannot enter the button click.
    
     this.props.onPlayerChange(this.props.row, this.props.col);

@@ -22,32 +22,40 @@ class App extends React.Component<null, State> {
   }
 
   onSquareClicked = (row: number, col: number) => {
-    let gameOver=this.checkGameOver(row,col);
+    let gameOver = this.checkGameOver(row, col);
+    console.log("gameOver", gameOver);
+
     if (gameOver) {
       alert("GAME OVER !");
       console.log("Game Over");
       this.setState({
-        gameOver:gameOver
-      })
+        gameOver: gameOver,
+      });
+      console.log(this.state.player);
       return;
     }
 
     // Game is not over.
     console.log(this.state.board);
+    let player = this.state.player;
+    player = player === "player 1" ? "player 2" : "player 1";
     let symbol = this.getSymbol(row, col);
     let board = this.state.board;
     //connecting symbol to board;
     board[row][col] = symbol;
-    console.log(board);
-    let player = this.state.player;
-    player = player === "player 1"?"player 2":"player 1"
+    //console.log(board);
+
+    //changes player.
+    //player = player === "player 1" ? "player 2" : "player 1";
+
     this.setState({
       player: player,
       board: board,
-      });
+    });
   };
-  checkGameOver = (row: number, col: number) => {
+  checkGameOver = (row: number, col: number): boolean => {
     let gameOver: boolean = false;
+    console.log(this.state.board[0][0], this.state.board[0][1], this.state.board[0][2])
     if (
       this.state.board[0][0] === this.state.board[0][1] &&
       this.state.board[0][1] === this.state.board[0][2] &&
@@ -55,11 +63,8 @@ class App extends React.Component<null, State> {
     ) {
       gameOver = true;
     }
-    if (gameOver) {
-      return gameOver;
-    }
-      
-  }
+    return gameOver;
+  };
   getSymbol(row: number, col: number): string {
     let symbol = "";
     if (this.state.board[row][col] === "") {
@@ -79,10 +84,18 @@ class App extends React.Component<null, State> {
           <h1>Tic Tac Toe</h1>
         </div>
         <div>
-          <h2>{this.state.gameOver && (
-            <div>Game Over ! Refresh to play next Game.{this.state.gameOver}</div>
-          )}</h2>
-          <h2> Now Playing {this.state.player}</h2>
+          <h2>
+            {this.state.gameOver && (
+              <div>
+                Game Over ! Refresh to play next Game.{this.state.gameOver}
+              </div>
+            )}
+          </h2>
+          <h2>
+            {this.state.gameOver === false && (
+              <div>Now Playing {this.state.player}</div>
+            )}
+          </h2>
           <table>
             <thead></thead>
             <tbody>
