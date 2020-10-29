@@ -22,40 +22,48 @@ class App extends React.Component<null, State> {
   }
 
   onSquareClicked = (row: number, col: number) => {
-    let gameOver = this.checkGameOver(row, col);
-    console.log("gameOver", gameOver);
-
-    if (gameOver) {
-      alert("GAME OVER !");
-      console.log("Game Over");
-      this.setState({
-        gameOver: gameOver,
-      });
-      console.log(this.state.player);
-      return;
-    }
-
-    // Game is not over.
-    console.log(this.state.board);
     let player = this.state.player;
     player = player === "player 1" ? "player 2" : "player 1";
     let symbol = this.getSymbol(row, col);
     let board = this.state.board;
-    //connecting symbol to board;
+    // update board with the correct symbol;
     board[row][col] = symbol;
-    //console.log(board);
+    this.setState(
+      {
+        player: player,
+        board: board,
+      },
+      () => {
+        // Post setState call back.
+        let gameOver = this.checkGameOver(row, col);
+        console.log("gameOver", gameOver);
 
-    //changes player.
-    //player = player === "player 1" ? "player 2" : "player 1";
+        if (gameOver) {
+          this.setState(
+            {
+              gameOver: gameOver,
+            },
+            () => {
+              //alert("GAME OVER !");
+              console.log("Game Over");
+            }
+          );
+          // console.log(this.state.player);
+          return;
+        }
+      }
+    );
 
-    this.setState({
-      player: player,
-      board: board,
-    });
+    // Game is not over.
+    console.log("game is not over");
   };
   checkGameOver = (row: number, col: number): boolean => {
     let gameOver: boolean = false;
-    console.log(this.state.board[0][0], this.state.board[0][1], this.state.board[0][2])
+    console.log(
+      this.state.board[0][0],
+      this.state.board[0][1],
+      this.state.board[0][2]
+    );
     if (
       this.state.board[0][0] === this.state.board[0][1] &&
       this.state.board[0][1] === this.state.board[0][2] &&
