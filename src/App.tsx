@@ -50,18 +50,46 @@ class App extends React.Component<null, State> {
   };
   checkGameOver = (row: number, col: number): boolean => {
     let gameOver: boolean = false;
-    console.log(
-      this.state.board[0][0],
-      this.state.board[0][1],
-      this.state.board[0][2]
-    );
+    //horizontal
     if (
-      this.state.board[0][0] === this.state.board[0][1] &&
-      this.state.board[0][1] === this.state.board[0][2] &&
-      this.state.board[0][0] !== ""
+      (this.state.board[0][0] === this.state.board[0][1] &&
+        this.state.board[0][1] === this.state.board[0][2] &&
+        this.state.board[0][0] !== "") ||
+      (this.state.board[1][0] === this.state.board[1][1] &&
+        this.state.board[1][1] === this.state.board[1][2] &&
+        this.state.board[1][0] !== "") ||
+      (this.state.board[2][0] === this.state.board[2][1] &&
+        this.state.board[2][1] === this.state.board[2][2] &&
+        this.state.board[2][0] !== "")
     ) {
       gameOver = true;
     }
+    //vertical
+    else if (
+      (this.state.board[0][0] === this.state.board[1][0] &&
+        this.state.board[1][0] === this.state.board[2][0] &&
+        this.state.board[0][0] !== "") ||
+      (this.state.board[0][1] === this.state.board[1][1] &&
+        this.state.board[1][1] === this.state.board[2][1] &&
+        this.state.board[0][1] !== "") ||
+      (this.state.board[0][2] === this.state.board[1][2] &&
+        this.state.board[1][2] === this.state.board[2][2] &&
+        this.state.board[0][2] !== "")
+    ) {
+      gameOver = true;
+    }
+    //diagonal
+    else if (
+      (this.state.board[0][0] === this.state.board[1][1] &&
+        this.state.board[1][1] === this.state.board[2][2] &&
+        this.state.board[0][0] !== "") ||
+      (this.state.board[0][2] === this.state.board[1][1] &&
+        this.state.board[1][1] === this.state.board[2][0] &&
+        this.state.board[2][0] !== "")
+    ) {
+      gameOver = true;
+    }
+
     return gameOver;
   };
   getSymbol(row: number, col: number): string {
